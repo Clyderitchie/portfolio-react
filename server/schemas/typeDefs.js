@@ -7,12 +7,17 @@ module.exports = gql`
     password: String
   }
 
+  type Auth {
+    token: ID
+    admin: Admin
+  }
+
   type Query {
     getAllAdmins: [Admin]
-    getAdmin(adminId: ID): Admin 
+    getAdmin(adminId: ID!): Admin
   }
 
   type Mutation {
-  createAdmin(username: String!, password: String!): Admin
-}
+    createAdmin(username: String!, password: String!): Auth
+  }
 `;
